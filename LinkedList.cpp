@@ -31,11 +31,8 @@ Node * remove(Node *& head, int key)
 
 Node * find(Node *head, int key)
 {
-    while(head && head->key != key)
-    {
-        head = head->next;
-    }
-    return head;   
+    if(!head || head->key == key) return head;
+    return find(head->next, key);
 }
 
 void reverse(Node *& head)
@@ -103,7 +100,7 @@ int main()
     Node * l3 = mergeLists(l1,l2);
     remove(l3, 8);
     printList(l3);
-    Node *result = find(l3, 200);
+    Node *result = find(l3, 10);
     if(result)
     {
         std::cout << result->key << std::endl;

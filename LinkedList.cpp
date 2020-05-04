@@ -4,6 +4,7 @@ struct Node
 {
     int key;
     Node *next;
+    Node() : key(0), next(nullptr){}
     Node(int _key) : key(_key), next(nullptr){}
     Node(int _key, Node * _next) : key(_key), next(_next){}
 };

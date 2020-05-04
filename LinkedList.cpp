@@ -15,6 +15,20 @@ void insert(Node *& head, int key)
     head = node;    
 }
 
+Node * remove(Node *& head, int key)
+{
+    if(!head) return head;
+    if(head->key == key)
+    {
+        Node * tmp = head;
+        head = head->next;
+        delete tmp;
+        return head;
+    }
+    head->next = remove(head->next, key);
+    return head;
+}
+
 Node * find(Node *head, int key)
 {
     while(head && head->key != key)
@@ -87,6 +101,7 @@ int main()
     printList(l1);
     printList(l2);
     Node * l3 = mergeLists(l1,l2);
+    remove(l3, 8);
     printList(l3);
     Node *result = find(l3, 200);
     if(result)

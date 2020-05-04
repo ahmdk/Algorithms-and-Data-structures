@@ -14,6 +14,15 @@ void insert(Node *& head, int key)
     head = node;    
 }
 
+Node * find(Node *head, int key)
+{
+    while(head && head->key != key)
+    {
+        head = head->next;
+    }
+    return head;   
+}
+
 void reverse(Node *& head)
 {
     Node * prev = nullptr;
@@ -78,6 +87,11 @@ int main()
     printList(l2);
     Node * l3 = mergeLists(l1,l2);
     printList(l3);
+    Node *result = find(l3, 200);
+    if(result)
+    {
+        std::cout << result->key << std::endl;
+    } else{
+        std::cout << "key was not found" << std::endl;
+    }
 }
-
-
